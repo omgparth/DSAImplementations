@@ -20,3 +20,12 @@ class SortableArray:
         self.array[left_pointer], self.array[pivot_index] = self.array[pivot_index], self.array[left_pointer]
 
         return left_pointer
+
+def quicksort(array, left_pointer, right_pointer):
+    if left_pointer < right_pointer:
+        sortable_array = SortableArray(array)
+        pivot_index = sortable_array.partition(left_pointer, right_pointer)
+        quicksort(sortable_array.array, left_pointer, pivot_index - 1)
+        quicksort(sortable_array.array, pivot_index + 1, right_pointer)
+
+    return array
